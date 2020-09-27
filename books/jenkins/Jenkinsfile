@@ -1,3 +1,4 @@
+/* groovylint-disable NestedBlockDepth */
 pipeline {
     options {
         // set a timeout of 60 minutes for this pipeline
@@ -14,7 +15,7 @@ pipeline {
         DEV_PROJECT = "velti01-books-dev"
         STAGE_PROJECT = "velti01-books-stage"
         APP_GIT_URL = "https://github.com/idwerv/DO288-apps"
-        NEXUS_SERVER = "http://nexus-common.apps.cluster.domain.example.com/repository/nodejs"
+        NEXUS_SERVER = "http://nexus-common.apps.eu45.prod.nextcle.com/repository/nodejs"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
         APP_NAME = "books"
@@ -52,9 +53,9 @@ pipeline {
             steps {
                 echo '### Cleaning existing resources in DEV env ###'
                 sh '''
-                        oc project ${DEV_PROJECT}
-                        oc delete all -l app=${APP_NAME}
-                        sleep 5
+                    oc project ${DEV_PROJECT}
+                    oc delete all -l app=${APP_NAME}
+                    sleep 5
                    '''
 
                 echo '### Creating a new app in DEV env ###'
